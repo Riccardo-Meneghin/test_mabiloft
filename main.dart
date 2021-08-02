@@ -9,10 +9,6 @@ class ProfileOverview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Colors.blue.shade300,
-        dividerColor: Colors.black,
-      ),
       home: ProfileHome(),
     );
   }
