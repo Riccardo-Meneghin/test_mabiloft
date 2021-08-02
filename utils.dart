@@ -114,9 +114,14 @@ Padding buildPadding(String text) {
     padding: EdgeInsets.fromLTRB(5.0, 35.0, 0.0, 15.0),
     child: Row(
       children: [
-        Text(
-          text,
-          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 17.0),
+        Container(
+          margin: EdgeInsets.only(left: 15.0),
+          child:
+            Text(
+              text,
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 17.0),
+            ),
+
         ),
       ],
     ),
@@ -134,14 +139,18 @@ Chip createChip(String text) {
   );
 }
 
-Wrap rowChips() {
-  return Wrap(spacing: 6.0, children: [
-    createChip("Superheroes"),
-    createChip("Crime"),
-    createChip("Comedy"),
-    createChip("Adventure"),
-    createChip("Sci-Fi"),
-  ]);
+Container rowChips() {
+  return Container(
+    margin: EdgeInsets.only(left: 15.0),
+    child:
+      Wrap(spacing: 6.0, children: [
+        createChip("Superheroes"),
+        createChip("Crime"),
+        createChip("Comedy"),
+        createChip("Adventure"),
+        createChip("Sci-Fi"),
+      ]),
+  );
 }
 
 SingleChildScrollView buildChips() {
@@ -166,51 +175,55 @@ Widget buildCard(List<Info> info) {
       itemCount: 10,
       itemBuilder: (context, index) {
         final indexedInfo = info[index];
-        return Card(
-          color: Colors.grey.shade200,
-          elevation: 0.0,
-          margin: EdgeInsets.only(right: 20.0, top: 10.0, bottom: 10.0),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(35.0),),
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
-            child: Column(
-              children: [
-                Row(
+        return Container(
+          margin: EdgeInsets.only(left: 15.0),
+          child:
+            Card(
+              color: Colors.grey.shade200,
+              elevation: 0.0,
+              margin: EdgeInsets.only(right: 20.0, top: 10.0, bottom: 10.0),
+              shape:
+                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(35.0),),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
+                child: Column(
                   children: [
-                    Wrap(
-                      spacing: 15.0,
+                    Row(
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(16.0),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: Ink.image(
-                              image: NetworkImage(indexedInfo.url),
-                              width: 195.0,
-                              height: 175.0,
-                              fit: BoxFit.cover,
+                        Wrap(
+                          spacing: 15.0,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(16.0),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: Ink.image(
+                                  image: NetworkImage(indexedInfo.url),
+                                  width: 180.0,
+                                  height: 175.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        Container(
-                          width: 150.0,
-                          height: 175.0,
-                          alignment: Alignment.center,
-                          child: Text(
-                            indexedInfo.title,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                fontSize: 20.0, fontWeight: FontWeight.w900),
-                          ),
+                            Container(
+                              width: 150.0,
+                              height: 175.0,
+                              alignment: Alignment.center,
+                              child: Text(
+                                indexedInfo.title,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    fontSize: 20.0, fontWeight: FontWeight.w900),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
-          ),
         );
       });
 }
